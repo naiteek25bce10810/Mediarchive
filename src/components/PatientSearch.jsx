@@ -29,7 +29,7 @@ export default function PatientSearch({ onPatientSelect }) {
     },
     {
       id: 3,
-      name: 'Shamique Khan',
+      name: 'Naiteek Papriwal',
       abhaId: '12-3456-7890-9101',
       age: 20,
       gender: 'Male',
@@ -50,7 +50,7 @@ export default function PatientSearch({ onPatientSelect }) {
 
   const startQRScan = () => {
     setScanning(true);
-    
+
     const config = {
       fps: 10,
       qrbox: { width: 250, height: 250 },
@@ -87,7 +87,7 @@ export default function PatientSearch({ onPatientSelect }) {
 
   const handleQRVerification = (e) => {
     e.preventDefault();
-    
+
     if (!qrToken || !otp) {
       alert('Please scan QR code and enter OTP');
       return;
@@ -100,7 +100,7 @@ export default function PatientSearch({ onPatientSelect }) {
 
     // Simulate verification
     alert(`Access Granted!\n\nPatient: Aarav Sharma\nABHA ID: 12-3456-7890-1234\nAccess Duration: 3 Days\n\nYou can now view this patient's medical records.`);
-    
+
     // Simulate patient access granted
     if (onPatientSelect) {
       onPatientSelect(mockPatients[0]);
@@ -138,8 +138,8 @@ export default function PatientSearch({ onPatientSelect }) {
           }}
         >
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="1.5"/>
-            <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
           Manual Search
         </button>
@@ -148,10 +148,10 @@ export default function PatientSearch({ onPatientSelect }) {
           onClick={() => setSearchMethod('qr')}
         >
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.5"/>
-            <rect x="14" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.5"/>
-            <rect x="3" y="14" width="7" height="7" stroke="currentColor" strokeWidth="1.5"/>
-            <path d="M14 14h7M14 17h7M14 20h7M17 14v7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+            <rect x="3" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
+            <rect x="14" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
+            <rect x="3" y="14" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
+            <path d="M14 14h7M14 17h7M14 20h7M17 14v7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
           </svg>
           QR Code Scan
         </button>
@@ -163,8 +163,8 @@ export default function PatientSearch({ onPatientSelect }) {
           <form className="search-form" onSubmit={handleManualSearch}>
             <div className="search-input-wrapper">
               <svg className="search-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="1.5"/>
-                <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
               <input
                 type="text"
@@ -186,8 +186,8 @@ export default function PatientSearch({ onPatientSelect }) {
                   <div key={patient.id} className="patient-card" onClick={() => handlePatientClick(patient)}>
                     <div className="patient-avatar">
                       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.5"/>
-                        <path d="M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                        <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="1.5" />
+                        <path d="M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                       </svg>
                     </div>
                     <div className="patient-info">
@@ -201,7 +201,7 @@ export default function PatientSearch({ onPatientSelect }) {
                     </div>
                     <div className="patient-action">
                       <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </div>
                   </div>
@@ -213,8 +213,8 @@ export default function PatientSearch({ onPatientSelect }) {
           {searchResults.length === 0 && searchTerm && (
             <div className="no-results">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="1.5"/>
-                <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="11" cy="11" r="8" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M21 21l-4.35-4.35" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
               <p>No patients found</p>
               <span>Try searching with a different ABHA ID or name</span>
@@ -229,10 +229,10 @@ export default function PatientSearch({ onPatientSelect }) {
           <div className="qr-section">
             <h3>
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.5"/>
-                <rect x="14" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.5"/>
-                <rect x="3" y="14" width="7" height="7" stroke="currentColor" strokeWidth="1.5"/>
-                <path d="M14 14h7M14 17h7M14 20h7M17 14v7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                <rect x="3" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
+                <rect x="14" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
+                <rect x="3" y="14" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M14 14h7M14 17h7M14 20h7M17 14v7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
               Scan Patient QR Code
             </h3>
@@ -240,17 +240,17 @@ export default function PatientSearch({ onPatientSelect }) {
             {!scanning && !qrToken && (
               <div className="qr-placeholder">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-                  <path d="M8 8h8v8H8z" stroke="currentColor" strokeWidth="1.5"/>
-                  <circle cx="12" cy="12" r="2" fill="currentColor"/>
+                  <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M8 8h8v8H8z" stroke="currentColor" strokeWidth="1.5" />
+                  <circle cx="12" cy="12" r="2" fill="currentColor" />
                 </svg>
                 <p>Ready to scan QR code</p>
                 <button className="start-scan-btn" onClick={startQRScan}>
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="3" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.5"/>
-                    <rect x="14" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.5"/>
-                    <rect x="3" y="14" width="7" height="7" stroke="currentColor" strokeWidth="1.5"/>
-                    <path d="M14 14h7M14 17h7M14 20h7M17 14v7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                    <rect x="3" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
+                    <rect x="14" y="3" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
+                    <rect x="3" y="14" width="7" height="7" stroke="currentColor" strokeWidth="1.5" />
+                    <path d="M14 14h7M14 17h7M14 20h7M17 14v7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                   </svg>
                   Start Camera
                 </button>
@@ -262,8 +262,8 @@ export default function PatientSearch({ onPatientSelect }) {
                 <div id="qr-reader"></div>
                 <button className="stop-scan-btn" onClick={stopQRScan}>
                   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
-                    <rect x="9" y="9" width="6" height="6" fill="currentColor"/>
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+                    <rect x="9" y="9" width="6" height="6" fill="currentColor" />
                   </svg>
                   Stop Scanning
                 </button>
@@ -273,8 +273,8 @@ export default function PatientSearch({ onPatientSelect }) {
             {qrToken && (
               <div className="qr-success">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
-                  <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+                  <path d="M9 12l2 2 4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <p>QR Code Scanned Successfully</p>
                 <code>{qrToken}</code>
@@ -285,9 +285,9 @@ export default function PatientSearch({ onPatientSelect }) {
           <div className="otp-section">
             <h3>
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" strokeWidth="1.5"/>
-                <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" strokeWidth="1.5"/>
-                <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                <rect x="3" y="11" width="18" height="11" rx="2" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" strokeWidth="1.5" />
+                <circle cx="12" cy="16" r="1" fill="currentColor" />
               </svg>
               Enter OTP
             </h3>
@@ -306,14 +306,14 @@ export default function PatientSearch({ onPatientSelect }) {
                 />
               </div>
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="verify-btn"
                 disabled={!qrToken || otp.length !== 6}
               >
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M22 4L12 14.01l-3-3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M22 4L12 14.01l-3-3" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 Verify & Access Records
               </button>
@@ -321,8 +321,8 @@ export default function PatientSearch({ onPatientSelect }) {
 
             <div className="otp-info">
               <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5"/>
-                <path d="M12 16v-4M12 8h.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="1.5" />
+                <path d="M12 16v-4M12 8h.01" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
               </svg>
               <p>Ask the patient for the 6-digit OTP displayed with their QR code</p>
             </div>

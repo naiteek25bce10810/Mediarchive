@@ -27,7 +27,7 @@ export default function PatientDashboard() {
   };
 
   const patientInfo = {
-    name: storedUser.name || 'Shamique Khan',
+    name: storedUser.name || 'Naiteek Papriwal',
     healthId: profile.healthId || 'HLTH001',
     abhaId: profile.abhaId || '12-3456-7890-1234',
     aadhaar: profile.aadhaar || '1234-5678-9012',
@@ -37,7 +37,7 @@ export default function PatientDashboard() {
     bloodGroup: profile.bloodGroup || 'O+',
     height: profile.height || '175 cm',
     weight: profile.weight || '65 kg',
-    email: storedUser.email || 'shamique.khan@email.com',
+    email: storedUser.email || 'naiteek.papriwal@email.com',
     phone: storedUser.phone || '+91 98765 43210',
     city: profile.city || 'Bangalore',
     state: profile.state || 'Karnataka'

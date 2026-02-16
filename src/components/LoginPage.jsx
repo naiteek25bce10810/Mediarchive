@@ -109,7 +109,7 @@ export default function LoginPage({ userType }) {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  placeholder={userType === 'patient' ? 'e.g. shamique.khan@email.com' : 'e.g. suryavi.budhwar@apollohospitals.com'}
+                  placeholder={userType === 'patient' ? 'e.g. naiteek.papriwal@email.com' : 'e.g. suryavi.budhwar@apollohospitals.com'}
                   required
                 />
               </div>

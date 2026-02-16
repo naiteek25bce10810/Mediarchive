@@ -70,7 +70,7 @@ export default function DoctorDashboard() {
     },
     {
       id: 3,
-      name: 'Shamique Khan',
+      name: 'Naiteek Papriwal',
       abhaId: '12-3456-7890-9012',
       age: 20,
       gender: 'Male',
@@ -131,7 +131,7 @@ export default function DoctorDashboard() {
     },
     {
       id: 3,
-      patientName: 'Shamique Khan',
+      patientName: 'Naiteek Papriwal',
       date: '2024-02-28',
       time: '11:15 AM',
       type: 'Emergency Consultation',

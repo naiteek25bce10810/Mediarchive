@@ -85,7 +85,7 @@
 
 ```bash
 # Clone the repository
-git clone https://github.com/shamiquekhan/mediarchive.git
+git clone https://github.com/naiteek25bce10810/Mediarchive.git
 
 # Navigate to project directory
 cd mediarchive
@@ -282,9 +282,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 👨‍💻 Author
 
-**Shamique Khan**
-- GitHub: [@shamiquekhan](https://github.com/shamiquekhan)
-- Repository: [mediarchive](https://github.com/shamiquekhan/mediarchive)
+**Naiteek Papriwal**
+- GitHub: [@naiteek25bce10810](https://github.com/naiteek25bce10810)
+- Repository: [Mediarchive](https://github.com/naiteek25bce10810/Mediarchive)
 
 ---
 
@@ -309,6 +309,6 @@ For support, email [support@mediarchive.com](mailto:support@mediarchive.com) or 
   
   Made with ❤️ for India's Digital Health Revolution
   
-  [Live Demo](https://mediarchive.vercel.app) • [Report Bug](https://github.com/shamiquekhan/mediarchive/issues) • [Request Feature](https://github.com/shamiquekhan/mediarchive/issues)
+  [Live Demo](https://mediarchive-zr98.vercel.app) • [Report Bug](https://github.com/naiteek25bce10810/Mediarchive/issues) • [Request Feature](https://github.com/naiteek25bce10810/Mediarchive/issues)
 
 </div>

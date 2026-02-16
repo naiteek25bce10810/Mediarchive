@@ -33,10 +33,10 @@ const seedDatabase = async () => {
         // CREATE USERS
         // ============================================
 
-        // Main patient user (Shamique Khan - matches frontend)
+        // Main patient user (Naiteek Papriwal - matches frontend)
         const patientUser = await User.create({
-            name: 'Shamique Khan',
-            email: 'shamique.khan@email.com',
+            name: 'Naiteek Papriwal',
+            email: 'naiteek.papriwal@email.com',
             password: 'patient123',
             role: 'patient',
             phone: '+91 98765 43210'
@@ -207,7 +207,7 @@ const seedDatabase = async () => {
         console.log('👨‍⚕️ Created doctor profiles');
 
         // ============================================
-        // CREATE MEDICAL RECORDS (for Shamique Khan)
+        // CREATE MEDICAL RECORDS (for Naiteek Papriwal)
         // ============================================
 
         await MedicalRecord.create([
@@ -301,7 +301,7 @@ const seedDatabase = async () => {
         console.log('📋 Created medical records');
 
         // ============================================
-        // CREATE MEDICATIONS (for Shamique Khan)
+        // CREATE MEDICATIONS (for Naiteek Papriwal)
         // ============================================
 
         await Medication.create([
@@ -346,7 +346,7 @@ const seedDatabase = async () => {
         console.log('💊 Created medications');
 
         // ============================================
-        // CREATE APPOINTMENTS (for Shamique Khan)
+        // CREATE APPOINTMENTS (for Naiteek Papriwal)
         // ============================================
 
         await Appointment.create([
@@ -379,7 +379,7 @@ const seedDatabase = async () => {
         console.log('📅 Created appointments');
 
         // ============================================
-        // CREATE VITALS (for Shamique Khan)
+        // CREATE VITALS (for Naiteek Papriwal)
         // ============================================
 
         await Vital.create([
@@ -453,7 +453,7 @@ const seedDatabase = async () => {
         console.log('📊 Created vitals');
 
         // ============================================
-        // CREATE ACCESS GRANTS (for Shamique Khan)
+        // CREATE ACCESS GRANTS (for Naiteek Papriwal)
         // ============================================
 
         await AccessGrant.create([
@@ -479,7 +479,7 @@ const seedDatabase = async () => {
         console.log('\n✅ Database seeded successfully!');
         console.log('\n📋 Login Credentials:');
         console.log('─────────────────────────────────');
-        console.log('Patient: shamique.khan@email.com / patient123');
+        console.log('Patient: naiteek.papriwal@email.com / patient123');
         console.log('Doctor:  suryavi.budhwar@apollohospitals.com / doctor123');
         console.log('─────────────────────────────────\n');
 
