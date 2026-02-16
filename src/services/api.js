@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Base API URL - update this when you have a backend
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001/api';
 
 // Create axios instance with default config
 const api = axios.create({
@@ -19,12 +19,12 @@ api.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
-    
+
     // Log request in development
     if (process.env.NODE_ENV === 'development') {
       console.log('📤 API Request:', config.method.toUpperCase(), config.url);
     }
-    
+
     return config;
   },
   (error) => {
@@ -40,13 +40,13 @@ api.interceptors.response.use(
     if (process.env.NODE_ENV === 'development') {
       console.log('📥 API Response:', response.config.url, response.status);
     }
-    
+
     return response;
   },
   (error) => {
     if (error.response) {
       const { status, data } = error.response;
-      
+
       // Handle different error status codes
       switch (status) {
         case 401:
@@ -56,25 +56,25 @@ api.interceptors.response.use(
           window.location.href = '/';
           alert('Session expired. Please login again.');
           break;
-          
+
         case 403:
           alert('You do not have permission to perform this action.');
           break;
-          
+
         case 404:
           console.error('Resource not found:', error.config.url);
           break;
-          
+
         case 500:
           alert('Server error. Please try again later.');
           break;
-          
+
         default:
           if (data.message) {
             alert(data.message);
           }
       }
-      
+
       console.error('❌ API Error:', status, data);
     } else if (error.request) {
       // Network error
@@ -83,7 +83,7 @@ api.interceptors.response.use(
     } else {
       console.error('❌ Error:', error.message);
     }
-    
+
     return Promise.reject(error);
   }
 );

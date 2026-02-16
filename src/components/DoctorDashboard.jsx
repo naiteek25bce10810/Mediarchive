@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './DoctorDashboard.css';
@@ -9,19 +9,33 @@ export default function DoctorDashboard() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedPatient, setSelectedPatient] = useState(null);
 
+  // Load user data from backend (stored at login)
+  const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+  const profile = storedUser.profile || {};
+
+  useEffect(() => {
+    // Redirect to login if not authenticated
+    if (!localStorage.getItem('authToken')) {
+      navigate('/login/doctor');
+    }
+  }, [navigate]);
+
   const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('user');
     navigate('/');
   };
 
-  // Doctor Information
+  // Doctor Information - loaded from backend via login
   const doctorInfo = {
-    name: 'Dr. Suryavi Budhwar',
-    specialization: 'Cardiologist',
-    hospital: 'Apollo Hospitals, Mumbai',
-    abhaId: '78-9012-3456-7890',
-    phone: '+91 98765 43210',
-    email: 'suryavi.budhwar@apollohospitals.com',
-    experience: '15 years',
+    name: storedUser.name || 'Dr. Suryavi Budhwar',
+    specialization: profile.specialization || 'Cardiologist',
+    hospital: profile.hospital || 'Apollo Hospitals, Mumbai',
+    abhaId: profile.hprId || '78-9012-3456-7890',
+    phone: storedUser.phone || '+91 98765 43210',
+    email: storedUser.email || 'suryavi.budhwar@apollohospitals.com',
+    experience: profile.experience || '15 years',
     patients: 348,
     consultationsToday: 12
   };
@@ -216,14 +230,14 @@ export default function DoctorDashboard() {
         </div>
 
         <nav className="sidebar-nav">
-          <button 
+          <button
             className={`nav-item ${activeTab === 'dashboard' ? 'active' : ''}`}
             onClick={() => setActiveTab('dashboard')}
           >
             <i className="bi bi-grid-fill"></i>
             <span>Dashboard</span>
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'patients' ? 'active' : ''}`}
             onClick={() => setActiveTab('patients')}
           >
@@ -231,28 +245,28 @@ export default function DoctorDashboard() {
             <span>Patients</span>
             <span className="badge">{linkedPatients.length}</span>
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'consultations' ? 'active' : ''}`}
             onClick={() => setActiveTab('consultations')}
           >
             <i className="bi bi-clipboard-pulse"></i>
             <span>Consultations</span>
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'search' ? 'active' : ''}`}
             onClick={() => setActiveTab('search')}
           >
             <i className="bi bi-search"></i>
             <span>Patient Search</span>
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'profile' ? 'active' : ''}`}
             onClick={() => setActiveTab('profile')}
           >
             <i className="bi bi-person-circle"></i>
             <span>Profile</span>
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'settings' ? 'active' : ''}`}
             onClick={() => setActiveTab('settings')}
           >
@@ -306,7 +320,7 @@ export default function DoctorDashboard() {
                 {stats.map((stat, index) => (
                   <div key={index} className="stat-card-modern">
                     <div className="stat-header-modern">
-                      <div className="stat-icon-modern" style={{backgroundColor: `${stat.color}15`, color: stat.color}}>
+                      <div className="stat-icon-modern" style={{ backgroundColor: `${stat.color}15`, color: stat.color }}>
                         <i className={stat.icon}></i>
                       </div>
                       <i className="bi bi-heart-fill stat-heart"></i>
@@ -492,7 +506,7 @@ export default function DoctorDashboard() {
                 </button>
               </div>
               <div className="coming-soon">
-                <i className="bi bi-search" style={{fontSize: '80px', color: '#CDEDB3'}}></i>
+                <i className="bi bi-search" style={{ fontSize: '80px', color: '#CDEDB3' }}></i>
                 <h3>Patient Search</h3>
                 <p>Search for patients by ABHA ID, name, or scan their QR code to access medical records.</p>
               </div>
@@ -605,8 +619,8 @@ export default function DoctorDashboard() {
                     <p className="patient-abha">ABHA ID: {selectedPatient.abhaId}</p>
                   </div>
                 </div>
-                <div className="coming-soon" style={{marginTop: '40px'}}>
-                  <i className="bi bi-file-medical" style={{fontSize: '80px', color: '#CDEDB3'}}></i>
+                <div className="coming-soon" style={{ marginTop: '40px' }}>
+                  <i className="bi bi-file-medical" style={{ fontSize: '80px', color: '#CDEDB3' }}></i>
                   <h3>Patient Medical Records</h3>
                   <p>View complete medical history, prescriptions, lab reports, and vitals for {selectedPatient.name}.</p>
                 </div>
@@ -621,7 +635,7 @@ export default function DoctorDashboard() {
                 <h3><i className="bi bi-gear-fill"></i> Settings</h3>
               </div>
               <div className="coming-soon">
-                <i className="bi bi-gear-fill" style={{fontSize: '80px', color: '#CDEDB3'}}></i>
+                <i className="bi bi-gear-fill" style={{ fontSize: '80px', color: '#CDEDB3' }}></i>
                 <h3>Settings</h3>
                 <p>Manage your account preferences, notifications, and privacy settings.</p>
               </div>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import './PatientDashboard.css';
@@ -8,25 +8,39 @@ export default function PatientDashboard() {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeTab, setActiveTab] = useState('overview');
 
+  // Load user data from backend (stored at login)
+  const storedUser = JSON.parse(localStorage.getItem('user') || '{}');
+  const profile = storedUser.profile || {};
+
+  useEffect(() => {
+    // Redirect to login if not authenticated
+    if (!localStorage.getItem('authToken')) {
+      navigate('/login/patient');
+    }
+  }, [navigate]);
+
   const handleLogout = () => {
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('user');
     navigate('/');
   };
 
   const patientInfo = {
-    name: 'Shamique Khan',
-    healthId: 'HLTH001',
-    abhaId: '12-3456-7890-1234',
-    aadhaar: '1234-5678-9012',
-    age: 20,
-    ageDisplay: '20 years',
-    gender: 'Male',
-    bloodGroup: 'O+',
-    height: '175 cm',
-    weight: '65 kg',
-    email: 'shamique.khan@email.com',
-    phone: '+91 98765 43210',
-    city: 'Bangalore',
-    state: 'Karnataka'
+    name: storedUser.name || 'Shamique Khan',
+    healthId: profile.healthId || 'HLTH001',
+    abhaId: profile.abhaId || '12-3456-7890-1234',
+    aadhaar: profile.aadhaar || '1234-5678-9012',
+    age: profile.age || 20,
+    ageDisplay: (profile.age || 20) + ' years',
+    gender: profile.gender || 'Male',
+    bloodGroup: profile.bloodGroup || 'O+',
+    height: profile.height || '175 cm',
+    weight: profile.weight || '65 kg',
+    email: storedUser.email || 'shamique.khan@email.com',
+    phone: storedUser.phone || '+91 98765 43210',
+    city: profile.city || 'Bangalore',
+    state: profile.state || 'Karnataka'
   };
 
   // Health Vitals - Essential Patient Metrics
@@ -259,49 +273,49 @@ export default function PatientDashboard() {
         </div>
 
         <nav className="sidebar-nav">
-          <button 
+          <button
             className={`nav-item ${activeTab === 'overview' ? 'active' : ''}`}
             onClick={() => setActiveTab('overview')}
           >
             <i className="bi bi-grid-fill"></i>
             <span>Dashboard</span>
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'health' ? 'active' : ''}`}
             onClick={() => setActiveTab('health')}
           >
             <i className="bi bi-heart-pulse"></i>
             <span>Health Vitals</span>
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'records' ? 'active' : ''}`}
             onClick={() => setActiveTab('records')}
           >
             <i className="bi bi-file-medical-fill"></i>
             <span>Medical Records</span>
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'appointments' ? 'active' : ''}`}
             onClick={() => setActiveTab('appointments')}
           >
             <i className="bi bi-calendar-check"></i>
             <span>Appointments</span>
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'medications' ? 'active' : ''}`}
             onClick={() => setActiveTab('medications')}
           >
             <i className="bi bi-prescription2"></i>
             <span>Medications</span>
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'notifications' ? 'active' : ''}`}
             onClick={() => setActiveTab('notifications')}
           >
             <i className="bi bi-bell"></i>
             <span>Notifications</span>
           </button>
-          <button 
+          <button
             className={`nav-item ${activeTab === 'settings' ? 'active' : ''}`}
             onClick={() => setActiveTab('settings')}
           >
@@ -525,10 +539,10 @@ export default function PatientDashboard() {
                 <p className="records-subtitle">Complete history of your medical consultations and treatments</p>
               </div>
               <div className="records-actions">
-                <input 
-                  type="text" 
-                  className="search-input-modern" 
-                  placeholder="Search by doctor, diagnosis, date..." 
+                <input
+                  type="text"
+                  className="search-input-modern"
+                  placeholder="Search by doctor, diagnosis, date..."
                   value={searchTerm}
                   onChange={handleSearch}
                 />
@@ -548,7 +562,7 @@ export default function PatientDashboard() {
                     </div>
                     <div className="record-status-badge active">Active</div>
                   </div>
-                  
+
                   <div className="record-doctor-section">
                     <div className="doctor-avatar">
                       <i className="bi bi-person-fill"></i>
@@ -582,8 +596,8 @@ export default function PatientDashboard() {
                         <i className="bi bi-file-earmark-x"></i> No Documents
                       </button>
                     ) : (
-                      <button 
-                        className="record-action-btn" 
+                      <button
+                        className="record-action-btn"
                         onClick={() => handleActionClick(record.action, record)}
                       >
                         <i className="bi bi-file-earmark-text"></i> {record.action}
