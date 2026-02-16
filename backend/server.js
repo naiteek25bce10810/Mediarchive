@@ -19,7 +19,20 @@ connectDB();
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://mediarchive.vercel.app'],
+    origin: function (origin, callback) {
+        const allowedOrigins = [
+            'http://localhost:3000',
+            'https://mediarchive.vercel.app',
+            'https://mediarchive-zr98.vercel.app'
+        ];
+        // Allow requests with no origin (mobile apps, curl, etc.)
+        if (!origin) return callback(null, true);
+        // Allow any Vercel preview URL
+        if (origin.endsWith('.vercel.app') || allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+        callback(new Error('Not allowed by CORS'));
+    },
     credentials: true
 }));
 app.use(express.json());
